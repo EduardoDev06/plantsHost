@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_auth"
+    app:startDestination="@id/launch">
+
+    <fragment
+        android:id="@+id/launch"
+        android:name="com.bootcampnttdata6.plantshost.features.auth.launch.LaunchFragment"
+        android:label="fragment_launch"
+        tools:layout="@layout/fragment_launch" >
+        <action
+            android:id="@+id/action_launch_to_sign_in"
+            app:destination="@id/sign_in" />
+        <action
+            android:id="@+id/action_launch_to_sign_up2"
+            app:destination="@id/sign_up" />
+    </fragment>
+    <fragment
+        android:id="@+id/sign_in"
+        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_in.presenter.SignInFragment"
+        android:label="fragment_sign_in"
+        tools:layout="@layout/fragment_sign_in" >
+        <action
+            android:id="@+id/action_sign_in_to_sign_up"
+            app:destination="@id/sign_up" />
+    </fragment>
+    <fragment
+        android:id="@+id/sign_up"
+        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_up.SignUpFragment"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_sign_up_to_sign_in"
+            app:destination="@id/sign_in" />
+    </fragment>
+</navigation>

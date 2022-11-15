@@ -1,0 +1,68 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.bootcampnttdata6.plantshost'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.bootcampnttdata6.plantshost"
+        minSdk 23
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    def core_ktx = "1.9.0"
+    def app_compat = "1.5.1"
+    def material = "1.7.0"
+    def constraintLayout = "2.1.4"
+    def jUnit = "4.12"
+    def ext_junit = "1.1.4"
+    def espresso = "3.5.0"
+    def fragment_ktx = "1.5.4"
+    def lifecycle_version = "2.6.0-alpha03"
+    def nav_version = "2.5.3"
+    def splash_screen = "1.0.0"
+
+    implementation "androidx.core:core-ktx:$core_ktx"
+    implementation "androidx.appcompat:appcompat:$app_compat"
+    implementation "com.google.android.material:material:$material"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintLayout"
+    testImplementation "junit:junit:$jUnit"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+
+    // Fragment Ktx
+    implementation "androidx.fragment:fragment-ktx:$fragment_ktx"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+
+    // Navigation component
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    // Splash screen
+    implementation "androidx.core:core-splashscreen:$splash_screen"
+}
