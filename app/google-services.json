@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "451735690226",
+    "project_id": "plantshost",
+    "storage_bucket": "plantshost.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:451735690226:android:c4b5cbbfa68444ff8fa96b",
+        "android_client_info": {
+          "package_name": "com.bootcampnttdata6.plantshost"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "451735690226-84tidupmvn2j3ltim0r0731raq1d82oq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqp9KpdvFKRNfCGkx5hntsglquXWVa4aA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "451735690226-84tidupmvn2j3ltim0r0731raq1d82oq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
