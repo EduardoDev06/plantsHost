@@ -44,6 +44,7 @@ dependencies {
     def lifecycle_version = "2.6.0-alpha03"
     def nav_version = "2.5.3"
     def splash_screen = "1.0.0"
+    def coroutines = "1.6.4"
 
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.appcompat:appcompat:$app_compat"
@@ -65,4 +66,7 @@ dependencies {
 
     // Splash screen
     implementation "androidx.core:core-splashscreen:$splash_screen"
+
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 }
