@@ -1,6 +1,7 @@
 package com.bootcampnttdata6.plantshost.features.main.favorite.data.resource.local.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Query
 import com.bootcampnttdata6.plantshost.features.main.favorite.data.resource.local.entity.PlantsEntity
 import kotlinx.coroutines.flow.Flow
 

@@ -1,7 +1,6 @@
 package com.bootcampnttdata6.plantshost.features.main.favorite.data.repository
 
 import com.bootcampnttdata6.plantshost.features.main.favorite.data.resource.local.dao.PlantDao
-import com.bootcampnttdata6.plantshost.features.main.favorite.data.resource.local.entity.PlantsEntity
 import com.bootcampnttdata6.plantshost.features.main.favorite.domain.model.PlantModel
 import com.bootcampnttdata6.plantshost.features.main.favorite.domain.repository.PlantFavoriteRepository
 import kotlinx.coroutines.flow.Flow
