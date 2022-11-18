@@ -1,4 +1,4 @@
-package com.bootcampnttdata6.plantshost.features.main.home.ui.adapter
+package com.bootcampnttdata6.plantshost.features.main.home.presenter.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

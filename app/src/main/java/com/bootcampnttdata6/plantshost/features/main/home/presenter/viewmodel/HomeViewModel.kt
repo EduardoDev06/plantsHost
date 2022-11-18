@@ -1,4 +1,4 @@
-package com.bootcampnttdata6.plantshost.features.main.home.ui.viewmodel
+package com.bootcampnttdata6.plantshost.features.main.home.presenter.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
