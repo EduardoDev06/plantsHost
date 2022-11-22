@@ -1,33 +1,28 @@
 package com.bootcampnttdata6.plantshost.di
 
-import android.app.Application
+import android.content.Context
 import androidx.room.Room
-import com.bootcampnttdata6.plantshost.core.HostPlantsDB
-import com.bootcampnttdata6.plantshost.features.main.favorite.data.repository.PlantsFavoriteRepositoryImpl
-import com.bootcampnttdata6.plantshost.features.main.favorite.domain.repository.PlantFavoriteRepository
-import com.bootcampnttdata6.plantshost.util.DATABASE_NAME
+import com.bootcampnttdata6.plantshost.core.data.local.db.HostPlantsDB
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object LocalModule {
-
+    private const val DATABASE_NAME = "PlantsHots_db"
     @Provides
     @Singleton
-    fun provideUserDatabase(app: Application) = Room.databaseBuilder(
-        app,
+    fun provideUserDatabase(@ApplicationContext context: Context) = Room.databaseBuilder(
+        context,
         HostPlantsDB::class.java,
         DATABASE_NAME
     ).build()
 
     @Provides
     @Singleton
-    fun provideRepository(db: HostPlantsDB): PlantFavoriteRepository {
-        return PlantsFavoriteRepositoryImpl(db.plantsDao)
-    }
-
+    fun provideRepository(db: HostPlantsDB) = db.plantsDao()
 }

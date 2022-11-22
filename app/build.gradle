@@ -12,7 +12,7 @@ android {
     namespace 'com.bootcampnttdata6.plantshost'
     compileSdk 33
 
-    buildFeatures{viewBinding  true}
+    buildFeatures { viewBinding true }
 
     defaultConfig {
         applicationId "com.bootcampnttdata6.plantshost"
@@ -95,6 +95,8 @@ dependencies {
     implementation "androidx.room:room-runtime:$room"
     kapt "androidx.room:room-compiler:$room"
     implementation "androidx.room:room-ktx:$room"
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-common:$room"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide"
@@ -106,5 +108,5 @@ dependencies {
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:31.0.2')
-    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation "com.google.firebase:firebase-auth-ktx"
 }

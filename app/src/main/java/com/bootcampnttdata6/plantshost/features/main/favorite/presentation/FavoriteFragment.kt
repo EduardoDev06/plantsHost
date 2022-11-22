@@ -7,22 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bootcampnttdata6.plantshost.databinding.FragmentFavoriteBinding
-import com.bootcampnttdata6.plantshost.features.main.favorite.domain.model.PlantModel
 import com.bootcampnttdata6.plantshost.features.main.favorite.presentation.adapter.FavoriteAdapter
+import com.bootcampnttdata6.plantshost.features.main.home.domain.model.Plants
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class FavoriteFragment : Fragment() {
-    private var _binding: FragmentFavoriteBinding? = null
+
+    private var _binding:FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
 
     lateinit var viewModel: FavoriteViewModel
 
     private lateinit var favoriteAdapter: FavoriteAdapter
-    private val listaFavoritePlants = mutableListOf<PlantModel>()
+    private val listaFavoritePlants = mutableListOf<Plants>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +49,6 @@ class FavoriteFragment : Fragment() {
             favoriteAdapter.setItems(it)
         }
     }
-
     private fun initPlantsRecyclerview() {
         binding.rvFavorite.layoutManager = GridLayoutManager(activity,2, RecyclerView.VERTICAL,false)
         favoriteAdapter = FavoriteAdapter(listaFavoritePlants) {
@@ -54,10 +56,10 @@ class FavoriteFragment : Fragment() {
         }
         binding.rvFavorite.adapter = favoriteAdapter
     }
-
-    private fun onClickListener(dataPlants: PlantModel) {
+    private fun onClickListener(dataPlants: Plants) {
         Toast.makeText(activity, "$dataPlants", Toast.LENGTH_SHORT).show()
+        val action = FavoriteFragmentDirections.actionFavoriteToDetail(dataPlants.id)
+        findNavController().navigate(action)
     }
-
 
 }
