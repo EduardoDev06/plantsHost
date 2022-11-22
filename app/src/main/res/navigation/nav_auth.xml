@@ -14,7 +14,7 @@
             android:id="@+id/action_launch_to_sign_in"
             app:destination="@id/sign_in" />
         <action
-            android:id="@+id/action_launch_to_sign_up2"
+            android:id="@+id/action_launch_to_sign_up"
             app:destination="@id/sign_up" />
     </fragment>
     <fragment
