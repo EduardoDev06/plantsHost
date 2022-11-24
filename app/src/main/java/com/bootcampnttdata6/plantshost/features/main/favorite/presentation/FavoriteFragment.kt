@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -34,10 +33,12 @@ class FavoriteFragment : Fragment() {
                 ViewModelProvider(it)[FavoriteViewModel::class.java]
             }!!
     }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle? ): View {
         _binding = FragmentFavoriteBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPlantsRecyclerview()
@@ -45,10 +46,11 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun getListTable() {
-        viewModel.listPlants.observe(viewLifecycleOwner){ it ->
+        viewModel.listPlants.observe(viewLifecycleOwner) {
             favoriteAdapter.setItems(it)
         }
     }
+
     private fun initPlantsRecyclerview() {
         binding.rvFavorite.layoutManager = GridLayoutManager(activity,2, RecyclerView.VERTICAL,false)
         favoriteAdapter = FavoriteAdapter(listaFavoritePlants) {
@@ -56,8 +58,8 @@ class FavoriteFragment : Fragment() {
         }
         binding.rvFavorite.adapter = favoriteAdapter
     }
+
     private fun onClickListener(dataPlants: Plants) {
-        //Toast.makeText(activity, "$dataPlants", Toast.LENGTH_SHORT).show()
         val action = FavoriteFragmentDirections.actionFavoriteToDetail(dataPlants.id)
         findNavController().navigate(action)
     }
@@ -66,5 +68,4 @@ class FavoriteFragment : Fragment() {
         _binding = null
         super.onDestroyView()
     }
-
 }
