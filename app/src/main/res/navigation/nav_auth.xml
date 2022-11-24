@@ -15,24 +15,32 @@
             app:destination="@id/sign_in" />
         <action
             android:id="@+id/action_launch_to_sign_up"
-            app:destination="@id/sign_up" />
+            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/sign_in"
-        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_in.presenter.SignInFragment"
+        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_in.presenter.view.SignInFragment"
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
-            android:id="@+id/action_sign_in_to_sign_up"
-            app:destination="@id/sign_up" />
+            android:id="@+id/action_sign_in_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+        <action
+            android:id="@+id/action_sign_in_to_mainActivity"
+            app:destination="@id/mainActivity" />
     </fragment>
     <fragment
-        android:id="@+id/sign_up"
-        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_up.SignUpFragment"
+        android:id="@+id/signUpFragment"
+        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_up.view.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
-            android:id="@+id/action_sign_up_to_sign_in"
+            android:id="@+id/action_signUpFragment_to_sign_in"
             app:destination="@id/sign_in" />
     </fragment>
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.bootcampnttdata6.plantshost.features.main.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
 </navigation>
