@@ -57,9 +57,14 @@ class FavoriteFragment : Fragment() {
         binding.rvFavorite.adapter = favoriteAdapter
     }
     private fun onClickListener(dataPlants: Plants) {
-        Toast.makeText(activity, "$dataPlants", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(activity, "$dataPlants", Toast.LENGTH_SHORT).show()
         val action = FavoriteFragmentDirections.actionFavoriteToDetail(dataPlants.id)
         findNavController().navigate(action)
+    }
+
+    override fun onDestroyView() {
+        _binding = null
+        super.onDestroyView()
     }
 
 }
