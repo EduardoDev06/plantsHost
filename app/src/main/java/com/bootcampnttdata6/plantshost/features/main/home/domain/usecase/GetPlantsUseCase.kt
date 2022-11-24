@@ -7,6 +7,7 @@ import com.bootcampnttdata6.plantshost.util.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetPlantsUseCase @Inject constructor(private val plantsRepository: PlantsRepository) {
+class GetPlantsUseCase @Inject constructor(
+    private val plantsRepository: PlantsRepository) {
     operator fun invoke(): Flow<Resource<List<Plants>>> = plantsRepository.fetchListPlants()
 }

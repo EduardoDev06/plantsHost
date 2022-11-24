@@ -26,4 +26,5 @@ data class PlantsEntity(
         status = status,
         isFavorite = false
     )
+
 }
