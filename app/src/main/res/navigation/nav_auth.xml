@@ -15,7 +15,7 @@
             app:destination="@id/sign_in" />
         <action
             android:id="@+id/action_launch_to_sign_up"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/sign_up" />
     </fragment>
     <fragment
         android:id="@+id/sign_in"
@@ -23,19 +23,19 @@
         android:label="fragment_sign_in"
         tools:layout="@layout/fragment_sign_in" >
         <action
-            android:id="@+id/action_sign_in_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            android:id="@+id/action_sign_in_to_sign_up"
+            app:destination="@id/sign_up" />
         <action
             android:id="@+id/action_sign_in_to_mainActivity"
             app:destination="@id/mainActivity" />
     </fragment>
     <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_up.view.SignUpFragment"
+        android:id="@+id/sign_up"
+        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_up.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
-            android:id="@+id/action_signUpFragment_to_sign_in"
+            android:id="@+id/action_sign_up_to_sign_in"
             app:destination="@id/sign_in" />
     </fragment>
     <activity

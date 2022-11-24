@@ -121,7 +121,7 @@
                     android:layout_marginTop="6dp"
                     android:background="@drawable/roundstyle"
                     android:text="@string/login_login_button"
-                    app:backgroundTint="@color/greenlight"
+                    app:backgroundTint="@color/green_light"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintEnd_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tiPassword"
@@ -139,7 +139,7 @@
                     app:layout_constraintEnd_toEndOf="@id/btnSignIn"
                     app:layout_constraintTop_toBottomOf="@id/btnSignIn"
                     android:indeterminateTintMode="src_atop"
-                    android:indeterminateTint="@color/bluelight"
+                    android:indeterminateTint="@color/blue_light"
                     />
             </FrameLayout>
 
@@ -164,7 +164,7 @@
                 android:layout_marginTop="10dp"
                 android:background="@drawable/roundstyle"
                 android:text="Registrarse"
-                app:backgroundTint="@color/bluelight"
+                app:backgroundTint="@color/blue_light"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tiPassword" />
 
