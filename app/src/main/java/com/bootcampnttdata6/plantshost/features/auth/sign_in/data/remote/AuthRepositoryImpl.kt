@@ -9,15 +9,15 @@ class AuthRepositoryImpl @Inject constructor(
  private val firebaseAuth: FirebaseAuth
 ): AuthRepository {
     override suspend fun login(email: String, password: String): Boolean {
-       try {
+       return try {
            var isSuccessfull=false
            firebaseAuth.signInWithEmailAndPassword(email,password)
                .addOnSuccessListener { isSuccessfull=true }
                .addOnFailureListener {isSuccessfull=false }
                .await()
-           return isSuccessfull
+           isSuccessfull
        }catch (e:Exception){
-         return  false
+           false
        }
     }
 
