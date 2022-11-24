@@ -11,6 +11,6 @@ class GetPlantsFavoriteUseCase @Inject constructor(
     private val repository: PlantFavoriteRepository
 ) {
     operator fun invoke(): Flow<List<Plants>> {
-        return repository.getPlantsFavorite().map { it.filter {plants-> !plants.isFavorite } }
+        return repository.getPlantsFavorite().map { it.filter {plants-> plants.isFavorite } }
     }
 }
