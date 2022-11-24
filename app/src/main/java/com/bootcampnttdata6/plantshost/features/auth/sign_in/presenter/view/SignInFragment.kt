@@ -74,7 +74,7 @@ class SignInFragment : Fragment() {
         with(binding) {
             binding.btnSignIn.setOnClickListener { handleLogin() }
             btnSignup.setOnClickListener {
-                findNavController().navigate(R.id.action_sign_in_to_signUpFragment)
+                findNavController().navigate(R.id.action_sign_in_to_sign_up)
             }
         }
     }
