@@ -6,19 +6,15 @@
     android:layout_height="match_parent"
     tools:context="com.bootcampnttdata6.plantshost.features.auth.AuthActivity">
 
-
     <androidx.fragment.app.FragmentContainerView
-
         android:id="@+id/nav_host_fragment_activity_AuthDisplay"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:defaultNavHost="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navGraph="@navigation/nav_auth"/>
-
-
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_auth" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
