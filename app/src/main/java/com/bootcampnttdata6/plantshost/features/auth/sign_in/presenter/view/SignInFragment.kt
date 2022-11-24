@@ -20,69 +20,73 @@ class SignInFragment : Fragment() {
     private val binding get() = _binding!!
     private val viewmodel: LoginViewModel by viewModels()
 
-    override fun onCreateView  (inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         _binding = FragmentSignInBinding.inflate(inflater, container, false)
         return binding.root
     }
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            initObservers()
-            initListeners()
-        }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        initObservers()
+        initListeners()
+    }
+
     private fun initObservers() {
         viewmodel.loginState.observe(viewLifecycleOwner) { state ->
             when (state) {
-                    is Resource.Success -> {
-                        handleLoading(isLoading = false)
-                        findNavController().navigate(R.id.action_sign_in_to_mainActivity)
-                    }
+                is Resource.Success -> {
+                    handleLoading(isLoading = false)
+                    findNavController().navigate(R.id.action_sign_in_to_mainActivity)
+                }
                 is Resource.Error -> {
                     handleLoading(isLoading = false)
-                        Toast.makeText(
-                            requireContext(),
-                            "Login Error",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
-                    is Resource.loading -> handleLoading(isLoading = true)
-                    else -> Unit
+                    Toast.makeText(
+                        requireContext(),
+                        "Login Error",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+                is Resource.loading -> handleLoading(isLoading = true)
+                else -> Unit
             }
         }
-    private fun handleLoading(isLoading: Boolean)
-    {
-        with(binding){
-            if (isLoading){
-                btnSignIn.text=""
-                btnSignIn.isEnabled=false
-                binding.pbLogin.visibility =View.VISIBLE
-            }   else {
+    }
+
+    private fun handleLoading(isLoading: Boolean) {
+        with(binding) {
+            if (isLoading) {
+                btnSignIn.text = ""
+                btnSignIn.isEnabled = false
+                binding.pbLogin.visibility = View.VISIBLE
+            } else {
                 binding.pbLogin.visibility = View.GONE
                 binding.btnSignIn.text = getString(R.string.login_login_button)
                 binding.btnSignIn.isEnabled = true
             }
         }
     }
-    private fun initListeners() {
-    with(binding) {
-        binding.btnSignIn.setOnClickListener { handleLogin() }
-        btnSignup.setOnClickListener {
-            findNavController().navigate(R.id.action_sign_in_to_signUpFragment)
 
+    private fun initListeners() {
+        with(binding) {
+            binding.btnSignIn.setOnClickListener { handleLogin() }
+            btnSignup.setOnClickListener {
+                findNavController().navigate(R.id.action_sign_in_to_signUpFragment)
+            }
         }
     }
-}
-    private fun handleLogin()
-    {
-        val email:String =binding.etMail.text.toString()
-        val password : String =binding.etPassword.text.toString()
-        viewmodel.login(email,password)
+
+    private fun handleLogin() {
+        val email: String = binding.etMail.text.toString()
+        val password: String = binding.etPassword.text.toString()
+        viewmodel.login(email, password)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding=null
+        _binding = null
     }
-
 }
-
