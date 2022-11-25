@@ -12,7 +12,7 @@ android {
     namespace 'com.bootcampnttdata6.plantshost'
     compileSdk 33
 
-    buildFeatures{viewBinding  true}
+    buildFeatures { viewBinding true }
 
     defaultConfig {
         applicationId "com.bootcampnttdata6.plantshost"
@@ -58,6 +58,7 @@ dependencies {
     def glide = "4.13.2"
     def okhttp = "4.10.0"
     def okhttpInterceptor = "4.9.0"
+    def imgPicker = "1.6.1"
 
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.appcompat:appcompat:$app_compat"
@@ -94,6 +95,9 @@ dependencies {
     // Room
     implementation "androidx.room:room-runtime:$room"
     kapt "androidx.room:room-compiler:$room"
+    implementation "androidx.room:room-ktx:$room"
+    // Kotlin Extensions and Coroutines support for Room
+    implementation "androidx.room:room-common:$room"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide"
@@ -105,5 +109,10 @@ dependencies {
 
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:31.0.2')
-    implementation 'com.google.firebase:firebase-auth-ktx'
+    implementation "com.google.firebase:firebase-auth-ktx"
+    //Firebase cloud storage library
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
+    //ImagePicker new
+    implementation "androidx.activity:activity:$imgPicker"
 }

@@ -2,4 +2,17 @@
     <string name="app_name">PlantsHost</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--Create plant fragment-->
+    <string name="cpf_insertImg">Inserte aquí su imagen</string>
+    <string name="cpf_title">Ingresa la información de la nueva planta</string>
+    <string name="cpf_name">Nombre:</string>
+    <string name="cpf_description">Descripción:</string>
+    <string name="cpf_price">Precio:</string>
+    <string name="cpf_status">Estado:</string>
+    <string name="cancel">Cancelar</string>
+    <string name="add">Guardar</string>
+    <string name="cpf_selectImg">Seleccione imagen</string>
+    <string name="cpf_dataError">"Debe ingresar todos los datos"</string>
+
 </resources>

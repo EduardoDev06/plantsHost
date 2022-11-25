@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="margin">16dp</dimen>
+    <dimen name="images">300dp</dimen>
+    <dimen name="textSize">16sp</dimen>
+    <dimen name="btnHeight">50dp</dimen>
+    <dimen name="etHeight">35dp</dimen>
+    <dimen name="corners">16dp</dimen>
+    <dimen name="insert_img">20dp</dimen>
+    <dimen name="padding">8dp</dimen>
+</resources>
