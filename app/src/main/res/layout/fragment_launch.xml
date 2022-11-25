@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/welcome_splash"
     tools:context="com.bootcampnttdata6.plantshost.features.auth.launch.LaunchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:text="My launch fragment" />
-</FrameLayout>
+    <Button
+        android:id="@+id/btnGoToSignIn"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:text="Sign In"
+        android:textColor="@color/teal_700"
+        android:textSize="18sp"
+        app:cornerRadius="20dp"
+        app:strokeColor="@color/teal_700"
+        app:strokeWidth="2dp"
+        android:backgroundTint="#8EFFFFFF"
+        style="?attr/materialButtonOutlinedStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.66" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.92" />
+
+    <Button
+        android:id="@+id/btnGoToSignUp"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:text="Sign Up"
+        android:textColor="@color/teal_700"
+        android:textSize="18sp"
+        app:cornerRadius="20dp"
+        app:strokeColor="@color/teal_700"
+        app:strokeWidth="2dp"
+        android:backgroundTint="#8EFFFFFF"
+        style="?attr/materialButtonOutlinedStyle"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toEndOf="@+id/btnGoToSignIn"
+        app:layout_constraintStart_toStartOf="@+id/btnGoToSignIn"
+        app:layout_constraintTop_toBottomOf="@+id/btnGoToSignIn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

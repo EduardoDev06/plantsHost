@@ -1,4 +1,4 @@
-package com.bootcampnttdata6.plantshost.features.main.home.ui.view
+package com.bootcampnttdata6.plantshost.features.main.home.presenter.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,8 +13,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bootcampnttdata6.plantshost.databinding.FragmentHomeBinding
 import com.bootcampnttdata6.plantshost.features.main.home.domain.model.Plants
-import com.bootcampnttdata6.plantshost.features.main.home.ui.adapter.PlantsAdapter
-import com.bootcampnttdata6.plantshost.features.main.home.ui.viewmodel.HomeViewModel
+import com.bootcampnttdata6.plantshost.features.main.home.presenter.adapter.PlantsAdapter
+import com.bootcampnttdata6.plantshost.features.main.home.presenter.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 

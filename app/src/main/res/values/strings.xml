@@ -2,4 +2,9 @@
     <string name="app_name">PlantsHost</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="mail">Correo</string>
+    <string name="required">requerido</string>
+    <string name="password">contraseña</string>
+    <string name="login_signup_button">Registrarme</string>
+    <string name="login_login_button">INICIAR SESION</string>
 </resources>

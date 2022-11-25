@@ -16,4 +16,5 @@ interface PlantsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllPlants(plants : List<PlantsEntity>)
 
+
 }
