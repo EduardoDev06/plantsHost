@@ -13,8 +13,7 @@ import javax.inject.Inject
 
 class CPRepositoryImpl @Inject constructor(
     private val plantsDao: PlantsDao
-):
-    CPRepository {
+):CPRepository {
         private val bucket: String = "gs://planthost-d4cdc.appspot.com"
         private val storageRef = Firebase.storage(bucket).reference
 
