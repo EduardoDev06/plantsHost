@@ -59,6 +59,7 @@ dependencies {
     def okhttp = "4.10.0"
     def okhttpInterceptor = "4.9.0"
     def imgPicker = "1.6.1"
+    def shimmer = "0.5.0"
 
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.appcompat:appcompat:$app_compat"
@@ -121,4 +122,6 @@ dependencies {
 
     //ImagePicker new
     implementation "androidx.activity:activity:$imgPicker"
+    //Shimmer Facebook
+    implementation "com.facebook.shimmer:shimmer:$shimmer"
 }
