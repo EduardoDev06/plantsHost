@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/white"
+    android:layout_margin="@dimen/margin"
     tools:context="com.bootcampnttdata6.plantshost.features.main.createPlant.presenter.CreatePlantFragment">
-
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent">
     <TextView
         android:id="@+id/tv_note"
         android:layout_width="match_parent"
@@ -14,9 +21,10 @@
         android:text="@string/cpf_title"
         android:textColor="@color/black"
         android:textStyle="bold"
+        android:textSize="@dimen/textSize"
         android:fontFamily="@font/inter_family"
         android:gravity="center"
-        android:textSize="@dimen/textSize"
+        android:padding="@dimen/padding"
         android:layout_margin="@dimen/margin"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,8 +44,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cpf_insertImg"
-            android:textSize="@dimen/insert_img"
+            android:textColor="@color/lotus"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
             android:fontFamily="@font/inter_family"
+            android:gravity = "center"
+            android:padding="@dimen/padding"
+            android:layout_margin="@dimen/margin"
             app:layout_constraintBottom_toBottomOf="@+id/rl_image"
             app:layout_constraintEnd_toEndOf="@+id/rl_image"
             app:layout_constraintStart_toStartOf="@+id/rl_image"
@@ -58,183 +71,157 @@
             app:layout_constraintTop_toTopOf="@+id/rl_image"
             app:shapeAppearance="@style/img_style"
             app:strokeColor="@color/lightGray"
-            app:strokeWidth="2dp" />
+            app:strokeWidth="2dp"
+            tools:ignore="ImageContrastCheck" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-    <LinearLayout
-        android:id="@+id/ll_nombre"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputName"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/insert_img"
-        android:layout_marginLeft="@dimen/margin"
-        android:layout_marginRight="@dimen/margin"
-        android:layout_marginBottom="@dimen/margin"
-        app:layout_constraintTop_toBottomOf="@id/rl_image">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="@string/cpf_name"
-            android:textStyle="bold"
-            android:fontFamily="@font/inter_family"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSize"
-            />
+        android:layout_margin="@dimen/margin"
+        app:boxCornerRadiusBottomStart="@dimen/margin"
+        app:boxCornerRadiusBottomEnd="@dimen/margin"
+        app:boxCornerRadiusTopStart="@dimen/margin"
+        app:boxCornerRadiusTopEnd="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/rl_image"
+        app:boxStrokeColor="@color/greenlght"
+        app:hintTextColor="@color/greenlght"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/etHeight"
-            android:textSize="@dimen/textSize"
-            android:padding="@dimen/padding"
+            android:layout_height="wrap_content"
+            android:hint="@string/cpf_name"
             android:textColor="@color/black"
-            android:background="@drawable/background_et"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:fontFamily="@font/inter_family"
             />
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_description"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputDescription"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="@dimen/margin"
-        app:layout_constraintTop_toBottomOf="@id/ll_nombre">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin"
-            android:text="@string/cpf_description"
-            android:fontFamily="@font/inter_family"
-            android:textStyle="bold"
-            android:gravity="top"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSize"
-            />
+        app:boxCornerRadiusBottomStart="@dimen/margin"
+        app:boxCornerRadiusBottomEnd="@dimen/margin"
+        app:boxCornerRadiusTopStart="@dimen/margin"
+        app:boxCornerRadiusTopEnd="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/inputName"
+        app:boxStrokeColor="@color/greenlght"
+        app:hintTextColor="@color/greenlght">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_description"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:textSize="@dimen/textSize"
-            android:padding="@dimen/padding"
+            android:layout_height="wrap_content"
+            android:hint="@string/cpf_description"
             android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:fontFamily="@font/inter_family"
             android:inputType="textMultiLine"
             android:lines="5"
             android:maxLines="8"
             android:minLines="5"
             android:gravity="top|start"
             android:scrollbars="vertical"
-            android:background="@drawable/background_et"
             />
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_precio"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputPrice"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="@dimen/margin"
-        app:layout_constraintTop_toBottomOf="@id/ll_description">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="@string/cpf_price"
-            android:textStyle="bold"
-            android:fontFamily="@font/inter_family"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSize"
-            />
-
+        app:boxCornerRadiusBottomStart="@dimen/margin"
+        app:boxCornerRadiusBottomEnd="@dimen/margin"
+        app:boxCornerRadiusTopStart="@dimen/margin"
+        app:boxCornerRadiusTopEnd="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/inputDescription"
+        app:boxStrokeColor="@color/greenlght"
+        app:hintTextColor="@color/greenlght">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_price"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/etHeight"
-            android:textSize="@dimen/textSize"
-            android:padding="@dimen/padding"
+            android:layout_height="match_parent"
+            android:hint="@string/cpf_price"
             android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:fontFamily="@font/inter_family"
             android:inputType="numberDecimal"
-            android:background="@drawable/background_et"
             />
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_status"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputStatus"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_margin="@dimen/margin"
-        app:layout_constraintTop_toBottomOf="@id/ll_precio">
-
-        <TextView
-            android:layout_width="100dp"
-            android:layout_height="match_parent"
-            android:text="@string/cpf_status"
-            android:fontFamily="@font/inter_family"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:textColor="@color/black"
-            android:textSize="@dimen/textSize"
-            />
-
+        app:boxCornerRadiusBottomStart="@dimen/margin"
+        app:boxCornerRadiusBottomEnd="@dimen/margin"
+        app:boxCornerRadiusTopStart="@dimen/margin"
+        app:boxCornerRadiusTopEnd="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@id/inputPrice"
+        app:boxStrokeColor="@color/greenlght"
+        app:hintTextColor="@color/greenlght">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/et_status"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/etHeight"
-            android:textSize="@dimen/textSize"
-            android:padding="@dimen/padding"
+            android:layout_height="match_parent"
+            android:hint="@string/cpf_status"
             android:textColor="@color/black"
-            android:background="@drawable/background_et"
+            android:textStyle="bold"
+            android:textSize="@dimen/textSize"
+            android:fontFamily="@font/inter_family"
             />
-    </LinearLayout>
+    </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="120dp"
+        android:layout_height="@dimen/btnHeight"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/margin"
+        android:backgroundTint="@color/bluelight"
+        android:fontFamily="@font/inter_family"
+        android:padding="@dimen/padding"
+        android:text="@string/cancel"
+        android:textAllCaps="true"
+        android:textColor="@color/lotus"
+        android:textSize="@dimen/textSize"
+        android:textStyle="bold"
+        app:cornerRadius="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputStatus" />
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/lotus"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_plus"
-            android:layout_width="120dp"
-            android:layout_height="@dimen/btnHeight"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin"
-            android:layout_marginEnd="@dimen/margin"
-            android:layout_marginBottom="@dimen/margin"
-            android:backgroundTint="@color/bluelight"
-            android:fontFamily="@font/inter_family"
-            android:text="@string/cancel"
-            android:textAllCaps="true"
-            android:textColor="@color/lotus"
-            android:textStyle="bold"
-            app:cornerRadius="@dimen/margin" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btn_add"
-            android:layout_width="120dp"
-            android:layout_height="@dimen/btnHeight"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/margin"
-            android:layout_marginTop="@dimen/margin"
-            android:layout_marginEnd="@dimen/margin"
-            android:layout_marginBottom="@dimen/margin"
-            android:backgroundTint="@color/greenlght"
-            android:fontFamily="@font/inter_family"
-            android:text="@string/add"
-            android:textAllCaps="true"
-            android:textColor="@color/lotus"
-            android:textStyle="bold"
-            app:cornerRadius="@dimen/margin" />
-    </RelativeLayout>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_add"
+        android:layout_width="120dp"
+        android:layout_height="@dimen/btnHeight"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="@color/greenlght"
+        android:text="@string/add"
+        android:textAllCaps="true"
+        android:textColor="@color/lotus"
+        android:textStyle="bold"
+        android:textSize="@dimen/textSize"
+        android:padding="@dimen/padding"
+        android:fontFamily="@font/inter_family"
+        android:layout_margin="@dimen/margin"
+        app:cornerRadius="@dimen/margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/inputStatus" />
 
     <ProgressBar
         android:id="@+id/progress"
@@ -247,3 +234,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
