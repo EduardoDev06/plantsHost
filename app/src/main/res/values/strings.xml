@@ -14,5 +14,7 @@
     <string name="add">Guardar</string>
     <string name="cpf_selectImg">Seleccione imagen</string>
     <string name="cpf_dataError">"Debe ingresar todos los datos"</string>
+    <string name="cpf_permission_required">Debe otorgar el permiso</string>
+    <string name="cpf_permission_ok">Ok</string>
 
 </resources>
