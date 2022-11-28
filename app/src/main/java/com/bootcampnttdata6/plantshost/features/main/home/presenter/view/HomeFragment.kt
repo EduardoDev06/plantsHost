@@ -24,6 +24,7 @@ class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
     private val binding get() = _binding!!
     private val plantsAdapter = PlantsAdapter(this)
     private val homeViewModel: HomeViewModel by viewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -102,6 +103,7 @@ class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
             "${resultPlants.id}, ${resultPlants.nameplant}, ${resultPlants.status}, ${resultPlants.price}, ${resultPlants.isFavorite}",
             Toast.LENGTH_SHORT
         ).show()
+        //findNavController().navigate(R.id.action_home_to_createPlant)
     }
 
     override fun onDestroyView() {
