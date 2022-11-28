@@ -114,13 +114,15 @@ class CreatePlantFragment : Fragment() {
     }
 
     private fun uploadImage(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU){
+            pickImage = true
+        }
         if(pickImage){
             pickMedia.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }else{
             Toast.makeText(context, R.string.cpf_permission_required, Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun saveData(){
         with(binding) {

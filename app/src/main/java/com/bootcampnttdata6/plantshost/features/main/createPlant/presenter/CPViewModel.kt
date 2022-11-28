@@ -1,4 +1,5 @@
 package com.bootcampnttdata6.plantshost.features.main.createPlant.presenter
+
 import android.net.Uri
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,13 +16,10 @@ import javax.inject.Inject
 @HiltViewModel
 class CPViewModel @Inject constructor(
     private val insertPlantUseCase: InsertPlantUseCase,
-    private val addImgToFStorageUseCase: AddImgToFStorageUseCase,
-
-
+    private val addImgToFStorageUseCase: AddImgToFStorageUseCase
 ): ViewModel(){
     private val _addImgFire = MutableStateFlow<Uri?>(null)
     val addImgFire = _addImgFire.asStateFlow()
-
 
      fun addImageToStorage(name:String,imageUri: Uri){
          viewModelScope.launch(Dispatchers.IO) {

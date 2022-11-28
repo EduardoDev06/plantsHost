@@ -10,9 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bootcampnttdata6.plantshost.R
 import com.bootcampnttdata6.plantshost.databinding.FragmentHomeBinding
 import com.bootcampnttdata6.plantshost.features.main.home.domain.model.Plants
 import com.bootcampnttdata6.plantshost.features.main.home.presenter.adapter.PlantsAdapter
@@ -105,7 +103,7 @@ class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
             "${resultPlants.id}, ${resultPlants.nameplant}, ${resultPlants.status}, ${resultPlants.price}, ${resultPlants.isFavorite}",
             Toast.LENGTH_SHORT
         ).show()
-        findNavController().navigate(R.id.action_home_to_createPlant)
+        //findNavController().navigate(R.id.action_home_to_createPlant)
     }
 
     override fun onDestroyView() {
