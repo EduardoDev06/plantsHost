@@ -29,9 +29,13 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/detail"
-        android:name="com.bootcampnttdata6.plantshost.features.main.detail.DetailFragment"
+        android:name="com.bootcampnttdata6.plantshost.features.main.detail.presentation.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="idPlant"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/createPlant"
         android:name="com.bootcampnttdata6.plantshost.features.main.createPlant.CreatePlantFragment"
