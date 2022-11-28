@@ -49,6 +49,7 @@ class HomeFragment : Fragment() {
         val menuHost: MenuHost = requireActivity()
         menuHost.addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                //Ya se inflo el menu en el activity
                 val searchItem = menu.findItem(R.id.action_search)
                 searchView = searchItem.actionView as SearchView
                 searchView?.queryHint = "Buscar..."
@@ -64,7 +65,6 @@ class HomeFragment : Fragment() {
                     }
                 })
             }
-
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return true
             }

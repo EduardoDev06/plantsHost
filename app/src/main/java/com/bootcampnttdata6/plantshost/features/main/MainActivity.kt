@@ -64,6 +64,7 @@ class MainActivity : AppCompatActivity() {
                     menu?.findItem(R.id.action_search)?.isVisible = false
                     menu?.findItem(R.id.action_logout)?.isVisible = false
                     menu?.findItem(R.id.action_more)?.isVisible = false
+
                 }
             }
         }
