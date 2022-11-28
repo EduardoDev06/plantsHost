@@ -7,7 +7,10 @@ import com.bootcampnttdata6.plantshost.features.main.home.domain.usecase.GetPlan
 import com.bootcampnttdata6.plantshost.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,14 +22,16 @@ class HomeViewModel @Inject constructor(private val plantsUseCase: GetPlantsUseC
 
     fun fetchListPlants() {
         viewModelScope.launch(Dispatchers.IO) {
-            plantsUseCase().collect{
+            plantsUseCase().onEach {
                 when (it) {
-                    is Resource.Loading -> _uiState.value = State.Loading
-                    is Resource.Success -> _uiState.value = State.Success(it.data)
                     is Resource.Error -> _uiState.value = State.Error(it.message)
+                    is Resource.Loading -> _uiState.value = State.Loading
+                    is Resource.Success -> {
+                        _uiState.value = State.Success(it.data)
+                    }
                     else -> Resource.Finish
                 }
-            }
+            }.launchIn(viewModelScope)
         }
     }
 

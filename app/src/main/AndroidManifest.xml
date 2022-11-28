@@ -40,11 +40,11 @@
         </activity>
         <activity
             android:name=".features.main.MainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan">
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
     </application>
+
 </manifest>

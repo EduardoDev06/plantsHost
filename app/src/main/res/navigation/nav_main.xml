@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home"
         android:name="com.bootcampnttdata6.plantshost.features.main.home.presenter.view.HomeFragment"
-        android:label="Listado de Plantas"
+        android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home_to_detailFragment"
@@ -35,7 +35,7 @@
         android:id="@+id/detail"
         android:name="com.bootcampnttdata6.plantshost.features.main.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail">
+        tools:layout="@layout/fragment_detail" >
         <argument
             android:name="idPlant"
             app:argType="integer" />
