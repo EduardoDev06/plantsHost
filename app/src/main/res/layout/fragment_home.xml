@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bootcampnttdata6.plantshost.features.main.home.ui.view.HomeFragment">
+    tools:context="com.bootcampnttdata6.plantshost.features.main.home.presenter.view.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPlants"
