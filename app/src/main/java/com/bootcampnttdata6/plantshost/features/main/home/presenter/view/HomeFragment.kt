@@ -1,16 +1,20 @@
 package com.bootcampnttdata6.plantshost.features.main.home.presenter.view
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import com.bootcampnttdata6.plantshost.R
 import com.bootcampnttdata6.plantshost.databinding.FragmentHomeBinding
 import com.bootcampnttdata6.plantshost.features.main.home.domain.model.Plants
 import com.bootcampnttdata6.plantshost.features.main.home.presenter.adapter.PlantsAdapter
@@ -19,12 +23,12 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
+class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val plantsAdapter = PlantsAdapter(this)
+    private val plantsAdapter = PlantsAdapter(this::onClick)
+    private var searchView: SearchView? = null
     private val homeViewModel: HomeViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,15 +41,57 @@ class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
         homeViewModel.fetchListPlants()
         initRecycler()
         initViewModel()
+        listenerBtn()
+        hideScrollFloatingBtn()
+        menuItems()
+    }
+    private fun menuItems() {
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                val searchItem = menu.findItem(R.id.action_search)
+                searchView = searchItem.actionView as SearchView
+                searchView?.queryHint = "Buscar..."
+                searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String): Boolean {
+                        searchView?.clearFocus()
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String): Boolean {
+                        plantsAdapter.filter.filter(newText)
+                        return true
+                    }
+                })
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+    }
+
+    private fun hideScrollFloatingBtn() {
+        binding.rvPlants.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                if (dy < 0 && !binding.btnSave.isShown) {
+                    binding.btnSave.show()
+                } else if (dy > 0 && binding.btnSave.isShown) {
+                    binding.btnSave.hide()
+                }
+            }
+        })
+    }
+
+    private fun listenerBtn() {
+        binding.btnSave.setOnClickListener {
+            findNavController().navigate(R.id.action_home_to_createPlant)
+        }
     }
 
     private fun initRecycler() {
         binding.rvPlants.apply {
-            layoutManager = LinearLayoutManager(
-                context,
-                LinearLayoutManager.VERTICAL,
-                false
-            )
+            layoutManager = StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL)
             adapter = plantsAdapter
         }
     }
@@ -55,14 +101,17 @@ class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 homeViewModel.uiState.collect { state ->
                     when (state) {
+                        is HomeViewModel.State.Loading -> {
+                            handleLoading(true)
+                        }
                         is HomeViewModel.State.Success -> {
                             state.resultPlants.let { data ->
                                 if (data.isNotEmpty()) {
-                                    plantsAdapter.submitList(data)
+                                    plantsAdapter.setData(data.toMutableList())
                                 } else {
                                     Toast.makeText(
                                         requireContext(),
-                                        "Error desconocido",
+                                        "No encontramos registros",
                                         Toast.LENGTH_SHORT
                                     ).show()
                                 }
@@ -76,9 +125,6 @@ class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
                                     .show()
                             }
                         }
-                        HomeViewModel.State.Loading -> {
-                            handleLoading(true)
-                        }
                     }
                 }
             }
@@ -88,22 +134,20 @@ class HomeFragment : Fragment(), PlantsAdapter.OnClickListener {
     private fun handleLoading(isLoading: Boolean) {
         with(binding) {
             if (isLoading) {
-                progress.visibility = View.VISIBLE
+                viewLoading.visibility = View.VISIBLE
                 rvPlants.visibility = View.GONE
+                btnSave.visibility = View.GONE
             } else {
-                progress.visibility = View.GONE
+                viewLoading.visibility = View.GONE
                 rvPlants.visibility = View.VISIBLE
+                btnSave.visibility = View.VISIBLE
             }
         }
     }
 
-    override fun onClick(resultPlants: Plants) {
-        Toast.makeText(
-            requireContext(),
-            "${resultPlants.id}, ${resultPlants.nameplant}, ${resultPlants.status}, ${resultPlants.price}, ${resultPlants.isFavorite}",
-            Toast.LENGTH_SHORT
-        ).show()
-        //findNavController().navigate(R.id.action_home_to_createPlant)
+    private fun onClick(itemPlant: Plants) {
+        val action = HomeFragmentDirections.actionHomeToDetailFragment(itemPlant.id)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
