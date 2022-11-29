@@ -14,6 +14,10 @@ android {
 
     buildFeatures { viewBinding true }
 
+    viewBinding{
+        enabled=true
+    }
+
     defaultConfig {
         applicationId "com.bootcampnttdata6.plantshost"
         minSdk 23
