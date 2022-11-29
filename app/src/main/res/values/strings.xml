@@ -7,4 +7,5 @@
     <string name="password">contraseña</string>
     <string name="login_signup_button">Registrarme</string>
     <string name="login_login_button">INICIAR SESION</string>
+
 </resources>
