@@ -2,21 +2,14 @@ package com.bootcampnttdata6.plantshost.features.auth.sign_up.presenter.view
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
-import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bootcampnttdata6.plantshost.R
-import com.bootcampnttdata6.plantshost.core.data.remote.UserService
 import com.bootcampnttdata6.plantshost.core.data.remote.dto.UserDto
 import com.bootcampnttdata6.plantshost.databinding.FragmentSignUpBinding
 import com.bootcampnttdata6.plantshost.features.auth.sign_up.presenter.viewmodels.SignUpViewModel
-import com.bootcampnttdata6.plantshost.features.auth.util.Constants.EMAIL_ALREADY_EXISTS
-import com.bootcampnttdata6.plantshost.features.auth.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,36 +22,38 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpBinding.bind(view)
 
+
         binding.editTextEmail.addTextChangedListener {
             signUpViewModel.setEmail(it.toString())
         }
         binding.editTextPassword.addTextChangedListener {
             signUpViewModel.setPassword(it.toString())
         }
+        binding.editTextName.addTextChangedListener {
+            signUpViewModel.setName(it.toString())
+        }
+        binding.editTextAddress.addTextChangedListener {
+            signUpViewModel.setAddress(it.toString())
+        }
+        binding.editTextAge.addTextChangedListener {
+            signUpViewModel.setAge(it.toString())
+        }
 
         binding.btnIngresar.setOnClickListener{
+            if (validateData()) return@setOnClickListener
             signUpViewModel.createAuthUser(signUpViewModel.email.value,signUpViewModel.password.value)
-        }
-
-        //getSignUpData()
-    }
-
-
-
-    private fun getSignUpData(){
-        binding.btnIngresar.setOnClickListener{
-            val email = binding.editTextEmail.text.toString().trim()
-            val name = binding.editTextName.text.toString()
-            val password = binding.editTextPassword.text.toString().trim()
-            val address = binding.editTextAddress.text.toString()
-            val age = binding.editTextAge.text.toString().trim()
-
-            if (validateData(email,name,password,address,age))  return@setOnClickListener
-            //addUser(email,name,password,address,age)
+            signUpViewModel.insertUser(signUpViewModel.email.value,signUpViewModel.name.value,signUpViewModel.address.value,signUpViewModel.age.value)
+            findNavController().navigate(R.id.action_sign_up_to_sign_in)
         }
     }
 
-    private fun validateData(email:String, name:String,password:String,address:String,age:String) : Boolean{
+    private fun validateData() : Boolean{
+        val email = binding.editTextEmail.text.toString().trim()
+        val name = binding.editTextName.text.toString()
+        val password = binding.editTextPassword.text.toString().trim()
+        val address = binding.editTextAddress.text.toString()
+        val age = binding.editTextAge.text.toString().trim()
+
         if(email.isEmpty()){
             binding.editTextEmail.error="Completar e-mail"
             return true
@@ -75,7 +70,7 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
             binding.editTextAddress.error="Completar dirección"
             return true
         }
-        if(age.isEmpty()){
+        if(age.isBlank()){
             binding.editTextAge.error="Completar edad"
             return true
         }
