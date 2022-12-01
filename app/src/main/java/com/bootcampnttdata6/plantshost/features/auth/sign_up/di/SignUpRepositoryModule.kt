@@ -5,7 +5,6 @@ import com.bootcampnttdata6.plantshost.features.auth.sign_up.domain.repository.S
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.components.SingletonComponent
 
 @Module

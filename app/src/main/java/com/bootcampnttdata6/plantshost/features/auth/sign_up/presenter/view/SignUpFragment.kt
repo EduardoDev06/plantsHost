@@ -73,30 +73,6 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
         return false
     }
-    /*private fun addUser(email: String,password: String, name: String,address: String, age: String){
-        signUpViewModel.signUpState.observe(viewLifecycleOwner, Observer { result->
-            when(result){
-                is Resource.loading ->{
-                    binding.progressBar.visibility=View.VISIBLE
-                    binding.btnIngresar.isEnabled = false
-                }
-                is Resource.Success<UserDto> -> {
-                    binding.progressBar.visibility=View.GONE
-                    signUpViewModel.signUp(user = result.data, password = result.data.userPassword)
-                    findNavController().navigate(R.id.action_sign_in_to_mainActivity)
-                }
-                is Resource.Error ->{
-                    binding.progressBar.visibility= View.GONE
-                    binding.btnIngresar.isEnabled = true
-                    Toast.makeText(requireContext(),"Error $result",Toast.LENGTH_SHORT).show()
-                }
-
-                else -> Unit
-            }
-        })
-    }*/
-
-
 
     private fun hideProgressDialog() {
         TODO("Not yet implemented")

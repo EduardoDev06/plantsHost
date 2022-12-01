@@ -13,7 +13,6 @@ class SignUpRepositoryImpl @Inject constructor(
         firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
         }
     }
-
     override suspend fun insertUser(email: String, name: String, address: String, age: Int) {
         val id = firebaseAuth.uid
 
@@ -34,6 +33,5 @@ class SignUpRepositoryImpl @Inject constructor(
                 }
                 .addOnFailureListener { e -> Log.w("INSERT_USER", "Error writing document", e); }
         }
-
     }
 }
