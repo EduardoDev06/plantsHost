@@ -44,7 +44,6 @@ android {
 }
 
 dependencies {
-    implementation 'com.google.firebase:firebase-auth:21.1.0'
     def core_ktx = "1.9.0"
     def app_compat = "1.5.1"
     def material = "1.7.0"
@@ -120,6 +119,7 @@ dependencies {
     implementation "com.google.firebase:firebase-firestore:17.1.2"
     implementation "com.google.firebase:firebase-analytics"
     implementation "com.google.firebase:firebase-storage-ktx:20.1.0"
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
 
     // Coroutines firebase
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1 "

@@ -31,7 +31,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     var userPassword: String = ""
     var userAddress: String? = ""
     var userAge: Int? = 0
-    var userImageBitmap: Bitmap = createBitmap(20, 20)
+    var img:String? = null
+    private var userImageBitmap: Bitmap? = null
 
     private val updateUserViewModel: ProfileUserViewModel by viewModels()
 
@@ -45,7 +46,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         activarElementos(false)
         editarPerfil()
         guardarCambios()
-
 
     }
 
@@ -71,10 +71,10 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                         binding.progressBar.visibility = View.GONE
 
                         val userdata = result.data
-                        Glide.with(binding.userImage.context).load(userdata?.userImage).centerCrop()
+                        img = userdata?.userImage
+                        Glide.with(binding.userImage.context).load(img).centerCrop()
                             .into(binding.userImage)
 
-                        userImageBitmap = binding.userImage.drawToBitmap()
                         binding.userEmail.setText(userdata?.userEmail)
                         binding.userFullName.setText(userdata?.userFullName)
                         binding.userAddress.setText(userdata?.userAddress)
@@ -108,10 +108,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             userAge = binding.userAge.text?.toString()?.trim()?.toInt()
             userPassword = binding.userPassword.text.toString().trim()
 
-            val user = User(userFullName, userAge, userEmail, userPassword, userAddress)
 
-            updateUserViewModel.updatePhotoProfileUser(userImageBitmap)
-            updateUserViewModel.updateDataProfileUser(user)
+            if (userImageBitmap == null) {
+                val user = User(userFullName, userAge, userEmail, userPassword, userAddress, img)
+                updateUserViewModel.updateDataProfileUser(user)
+            }else{
+                val user = User(userFullName, userAge, userEmail, userPassword, userAddress)
+                updateUserViewModel.updatePhotoProfileUser(userImageBitmap)
+                updateUserViewModel.updateDataProfileUser(user)
+            }
 
             activarElementos(false)
 
@@ -120,9 +125,15 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     }
 
     private val startForResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-            userImageBitmap = it.data?.extras?.get("data") as Bitmap
-            binding.userImage.setImageBitmap(userImageBitmap)
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val photoPick = result.data
+            if(photoPick == null){
+                Toast.makeText(requireContext(), "No ha seleccionado foto", Toast.LENGTH_SHORT).show()
+            }else{
+                userImageBitmap = photoPick.extras?.get("data") as Bitmap
+                binding.userImage.setImageBitmap(userImageBitmap)
+            }
+
         }
 
     private fun editarPerfil() {
