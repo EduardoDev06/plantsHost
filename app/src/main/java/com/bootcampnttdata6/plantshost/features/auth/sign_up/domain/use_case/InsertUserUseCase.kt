@@ -6,7 +6,7 @@ import javax.inject.Inject
 class InsertUserUseCase @Inject constructor(
     private val signUpRepository: SignUpRepository
 ) {
-    suspend operator fun invoke(email: String,name : String, address: String,age: Int) {
-        signUpRepository.insertUser(email,name,address,age)
+    suspend operator fun invoke(email: String,name : String, address: String,age: Int, id: String?) {
+        signUpRepository.insertUser(email,name,address,age, id)
     }
 }

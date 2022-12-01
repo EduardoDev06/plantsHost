@@ -1,12 +1,10 @@
 package com.bootcampnttdata6.plantshost.features.auth.sign_up.presenter.viewmodels
 
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.bootcampnttdata6.plantshost.features.auth.sign_up.domain.use_case.CreateAccountAuthUseCase
 import com.bootcampnttdata6.plantshost.features.auth.sign_up.domain.use_case.InsertUserUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -48,15 +46,11 @@ class SignUpViewModel @Inject constructor(
     fun setAge(text: String) {
         _age.value=text
     }
-    fun createAuthUser(email: String,password: String){
-        viewModelScope.launch {
-            signUpUseCase(email,password)
-        }
+    suspend fun createAuthUser(email: String,password: String): String? {
+        return signUpUseCase(email,password)
     }
-    fun insertUser(email: String,name:String,address:String,age:String){
-        viewModelScope.launch {
-            insertUserUseCase(email, name, address, age.toInt())
-        }
+    suspend fun insertUser(email: String,name:String,address:String,age:String, id: String?){
+        insertUserUseCase(email, name, address, age.toInt(), id)
     }
 }
 

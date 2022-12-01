@@ -1,5 +1,6 @@
 package com.bootcampnttdata6.plantshost.features.main.profile.presenter.view
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -8,8 +9,6 @@ import androidx.fragment.app.Fragment
 import android.view.View
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.graphics.createBitmap
-import androidx.core.view.drawToBitmap
 import com.bootcampnttdata6.plantshost.util.Result
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -119,21 +118,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
 
             activarElementos(false)
-
         }
-
     }
 
     private val startForResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            val photoPick = result.data
-            if(photoPick == null){
-                Toast.makeText(requireContext(), "No ha seleccionado foto", Toast.LENGTH_SHORT).show()
-            }else{
-                userImageBitmap = photoPick.extras?.get("data") as Bitmap
+            if (result.resultCode == Activity.RESULT_OK) {
+                val photoPick = result.data
+                userImageBitmap = photoPick?.extras?.get("data") as Bitmap
                 binding.userImage.setImageBitmap(userImageBitmap)
+            } else {
+                Toast.makeText(requireContext(), "No ha seleccionado foto", Toast.LENGTH_SHORT).show()
             }
-
         }
 
     private fun editarPerfil() {

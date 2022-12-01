@@ -6,8 +6,7 @@ import javax.inject.Inject
 class CreateAccountAuthUseCase @Inject constructor(
     private val signUpRepository: SignUpRepository)
 {
-
-    suspend operator fun invoke(email: String,password : String) {
-       signUpRepository.createAuthUser(email,password)
+    suspend operator fun invoke(email: String,password : String): String? {
+       return signUpRepository.createAuthUser(email,password)
     }
 }

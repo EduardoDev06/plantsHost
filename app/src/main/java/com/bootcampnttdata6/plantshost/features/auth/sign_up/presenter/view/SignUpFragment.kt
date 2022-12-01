@@ -5,11 +5,15 @@ import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bootcampnttdata6.plantshost.R
 import com.bootcampnttdata6.plantshost.databinding.FragmentSignUpBinding
 import com.bootcampnttdata6.plantshost.features.auth.sign_up.presenter.viewmodels.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
@@ -38,9 +42,12 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
 
         binding.btnIngresar.setOnClickListener{
             if (validateData()) return@setOnClickListener
-            signUpViewModel.createAuthUser(signUpViewModel.email.value,signUpViewModel.password.value)
-            signUpViewModel.insertUser(signUpViewModel.email.value,signUpViewModel.name.value,signUpViewModel.address.value,signUpViewModel.age.value)
-            findNavController().navigate(R.id.action_sign_up_to_sign_in)
+            lifecycleScope.launch {
+                val async1 = async { signUpViewModel.createAuthUser(signUpViewModel.email.value,signUpViewModel.password.value) }
+                val id = async1.await()
+                signUpViewModel.insertUser(signUpViewModel.email.value,signUpViewModel.name.value,signUpViewModel.address.value,signUpViewModel.age.value, id)
+                findNavController().navigate(R.id.action_sign_up_to_sign_in)
+            }
         }
     }
 
