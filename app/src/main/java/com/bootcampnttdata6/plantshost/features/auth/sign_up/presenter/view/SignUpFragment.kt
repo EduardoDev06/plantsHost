@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.bootcampnttdata6.plantshost.R
-import com.bootcampnttdata6.plantshost.core.data.remote.dto.UserDto
 import com.bootcampnttdata6.plantshost.databinding.FragmentSignUpBinding
 import com.bootcampnttdata6.plantshost.features.auth.sign_up.presenter.viewmodels.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -15,13 +14,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
     private lateinit var binding: FragmentSignUpBinding
-    private lateinit var user : UserDto
     private val signUpViewModel: SignUpViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentSignUpBinding.bind(view)
-
 
         binding.editTextEmail.addTextChangedListener {
             signUpViewModel.setEmail(it.toString())
