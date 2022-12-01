@@ -73,8 +73,4 @@ class SignUpFragment : Fragment(R.layout.fragment_sign_up) {
         }
         return false
     }
-
-    private fun hideProgressDialog() {
-        TODO("Not yet implemented")
-    }
 }
