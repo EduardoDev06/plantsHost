@@ -1,14 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bootcampnttdata6.plantshost.features.main.detail.DetailFragment">
+    tools:context="com.bootcampnttdata6.plantshost.features.main.detail.presentation.DetailFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/showName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NombreDelProducto"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="40sp"
+                android:paddingEnd="17dp"
+                tools:ignore="RtlSymmetry"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="20dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+            <TextView
+                android:id="@+id/showPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="@string/precio"
+                android:textColor="@color/teal_700"
+                android:textStyle="bold"
+                android:textSize="35sp"
+                android:layout_marginTop="5dp"
+                tools:ignore="RtlSymmetry"
+                android:layout_gravity="start"
+                android:layout_weight="5"/>
+
+                <ImageView
+                    android:id="@+id/favbutton"
+                    android:layout_width="62dp"
+                    android:layout_height="58dp"
+                    android:layout_marginEnd="40dp"
+                    android:background="@drawable/ic_favorite" />
+            </LinearLayout>
+
+
+            <ImageView
+                android:id="@+id/showPic"
+                android:layout_width="330dp"
+                android:layout_height="330dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/shape_showpic" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp" >
+                <TextView
+                    android:id="@+id/showDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/DescripcionDelProducto"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="RtlSymmetry"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"/>
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/status"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    tools:ignore="RtlSymmetry"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="40dp"/>
+                <TextView
+                    android:id="@+id/showStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/disponibilidad"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    tools:ignore="RtlSymmetry"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="40dp"
+                    android:paddingBottom="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
