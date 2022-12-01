@@ -24,7 +24,7 @@ data class PlantsEntity(
         nameplant= nameplant,
         price = price,
         status = status,
-        isFavorite = false
+        isFavorite = isFavorite
     )
 
 }

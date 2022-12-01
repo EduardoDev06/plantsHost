@@ -1,33 +1,34 @@
 {
   "project_info": {
-    "project_number": "451735690226",
-    "project_id": "plantshost",
-    "storage_bucket": "plantshost.appspot.com"
+    "project_number": "373522338938",
+    "firebase_url": "https://planthost-d4cdc-default-rtdb.firebaseio.com",
+    "project_id": "planthost-d4cdc",
+    "storage_bucket": "planthost-d4cdc.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:451735690226:android:c4b5cbbfa68444ff8fa96b",
+        "mobilesdk_app_id": "1:373522338938:android:c37753a572f62dddd497c3",
         "android_client_info": {
           "package_name": "com.bootcampnttdata6.plantshost"
         }
       },
       "oauth_client": [
         {
-          "client_id": "451735690226-84tidupmvn2j3ltim0r0731raq1d82oq.apps.googleusercontent.com",
+          "client_id": "373522338938-uoirnoktloepk2gadju7jru1c6ujbhr1.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAqp9KpdvFKRNfCGkx5hntsglquXWVa4aA"
+          "current_key": "AIzaSyDHJsLfzOXlDEp8yBc1RE5FH4vMuWoTRKo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "451735690226-84tidupmvn2j3ltim0r0731raq1d82oq.apps.googleusercontent.com",
+              "client_id": "373522338938-uoirnoktloepk2gadju7jru1c6ujbhr1.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

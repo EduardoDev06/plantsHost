@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home"
         android:name="com.bootcampnttdata6.plantshost.features.main.home.presenter.view.HomeFragment"
-        android:label="fragment_home"
+        android:label="Listado de Plantas"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_home_to_detailFragment"
@@ -33,7 +33,7 @@
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/detail"
-        android:name="com.bootcampnttdata6.plantshost.features.main.detail.DetailFragment"
+        android:name="com.bootcampnttdata6.plantshost.features.main.detail.presentation.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
@@ -42,7 +42,7 @@
     </fragment>
     <fragment
         android:id="@+id/createPlant"
-        android:name="com.bootcampnttdata6.plantshost.features.main.createPlant.CreatePlantFragment"
+        android:name="com.bootcampnttdata6.plantshost.features.main.createPlant.presenter.CreatePlantFragment"
         android:label="fragment_create_plant"
         tools:layout="@layout/fragment_create_plant" />
 </navigation>
