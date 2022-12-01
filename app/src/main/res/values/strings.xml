@@ -7,4 +7,25 @@
     <string name="password">contraseña</string>
     <string name="login_signup_button">Registrarme</string>
     <string name="login_login_button">INICIAR SESION</string>
+
+    <!--Create plant fragment-->
+    <string name="cpf_insertImg">Inserte aquí su imagen</string>
+    <string name="cpf_title">Ingresa la información de la nueva planta</string>
+    <string name="cpf_name">Nombre:</string>
+    <string name="cpf_description">Descripción:</string>
+    <string name="cpf_price">Precio:</string>
+    <string name="cpf_status">Estado:</string>
+    <string name="cancel">Cancelar</string>
+    <string name="add">Guardar</string>
+    <string name="cpf_selectImg">Seleccione imagen</string>
+    <string name="cpf_dataError">"Debe ingresar todos los datos"</string>
+    <string name="cpf_permission_required">Debe otorgar el permiso</string>
+    <string name="cpf_permission_ok">Ok</string>
+
+    <string name="NombreDelProducto">Nombre de la flor</string>
+    <string name="precio">Precio</string>
+    <string name="DescripcionDelProducto">Descripcion de la flor</string>
+    <string name="status">Status:</string>
+    <string name="disponibilidad">completar disponibilidad</string>
+
 </resources>
