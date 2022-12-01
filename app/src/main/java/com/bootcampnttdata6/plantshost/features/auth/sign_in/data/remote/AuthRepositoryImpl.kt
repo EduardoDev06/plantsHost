@@ -1,5 +1,6 @@
 package com.bootcampnttdata6.plantshost.features.auth.sign_in.data.remote
 
+import android.util.Log
 import com.bootcampnttdata6.plantshost.features.auth.sign_in.domain.repository.AuthRepository
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.tasks.await
