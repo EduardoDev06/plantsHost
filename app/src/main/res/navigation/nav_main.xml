@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/profile"
-        android:name="com.bootcampnttdata6.plantshost.features.main.profile.ProfileFragment"
+        android:name="com.bootcampnttdata6.plantshost.features.main.profile.presenter.view.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment

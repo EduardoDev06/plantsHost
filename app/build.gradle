@@ -64,6 +64,7 @@ dependencies {
     def okhttpInterceptor = "4.9.0"
     def imgPicker = "1.6.1"
     def shimmer = "0.5.0"
+    def circleImage = "3.1.0"
 
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.appcompat:appcompat:$app_compat"
@@ -119,6 +120,7 @@ dependencies {
     implementation "com.google.firebase:firebase-firestore:17.1.2"
     implementation "com.google.firebase:firebase-analytics"
     implementation "com.google.firebase:firebase-storage-ktx:20.1.0"
+    implementation 'com.google.firebase:firebase-auth:21.1.0'
 
     // Coroutines firebase
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.4.1 "
@@ -129,4 +131,8 @@ dependencies {
     implementation "androidx.activity:activity:$imgPicker"
     //Shimmer Facebook
     implementation "com.facebook.shimmer:shimmer:$shimmer"
+
+    //Imagen circular
+    implementation "de.hdodenhof:circleimageview:$circleImage"
+
 }
