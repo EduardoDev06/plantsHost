@@ -27,4 +27,5 @@
     <string name="DescripcionDelProducto">Descripcion de la flor</string>
     <string name="status">Status:</string>
     <string name="disponibilidad">completar disponibilidad</string>
+
 </resources>
