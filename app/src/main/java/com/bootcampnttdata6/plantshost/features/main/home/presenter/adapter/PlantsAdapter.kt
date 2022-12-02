@@ -36,6 +36,9 @@ class PlantsAdapter(private val onItemClick: (Plants) -> Unit) :
             itemView.setOnClickListener {
                 onItemClick(itemPlant)
             }
+            price.setOnClickListener { 
+                onItemClick(itemPlant)
+            }
             val shimmer = Shimmer.ColorHighlightBuilder()
                 .setBaseColor(
                     ContextCompat.getColor(

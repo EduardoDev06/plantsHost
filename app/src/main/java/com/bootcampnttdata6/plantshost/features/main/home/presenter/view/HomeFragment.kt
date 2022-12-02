@@ -1,12 +1,14 @@
 package com.bootcampnttdata6.plantshost.features.main.home.presenter.view
 
+import android.app.SearchManager
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.Html
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuHost
-import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -27,7 +29,6 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val plantsAdapter = PlantsAdapter(this::onClick)
-    private var searchView: SearchView? = null
     private val homeViewModel: HomeViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,32 +44,28 @@ class HomeFragment : Fragment() {
         initViewModel()
         listenerBtn()
         hideScrollFloatingBtn()
-        menuItems()
+        search()
     }
-    private fun menuItems() {
-        val menuHost: MenuHost = requireActivity()
-        menuHost.addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                //Ya se inflo el menu en el activity
-                val searchItem = menu.findItem(R.id.action_search)
-                searchView = searchItem.actionView as SearchView
-                searchView?.queryHint = "Buscar..."
-                searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                    override fun onQueryTextSubmit(query: String): Boolean {
-                        searchView?.clearFocus()
-                        return true
-                    }
 
-                    override fun onQueryTextChange(newText: String): Boolean {
-                        plantsAdapter.filter.filter(newText)
-                        return true
-                    }
-                })
-            }
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+    private fun search() {
+        val searchManager =
+            requireActivity().getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        val searchView: SearchView = binding.searchView
+        searchView.queryHint = Html.fromHtml("<font color = #959595>" + "Buscar..." + "</font>");
+        val searchableInfo = searchManager.getSearchableInfo(requireActivity().componentName)
+        searchView.setSearchableInfo(searchableInfo)
+        searchView.setIconifiedByDefault(false)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String): Boolean {
+                binding.searchView.clearFocus()
                 return true
             }
-        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+            override fun onQueryTextChange(newText: String): Boolean {
+                plantsAdapter.filter.filter(newText)
+                return true
+            }
+        })
     }
 
     private fun hideScrollFloatingBtn() {
@@ -137,10 +134,12 @@ class HomeFragment : Fragment() {
                 viewLoading.visibility = View.VISIBLE
                 rvPlants.visibility = View.GONE
                 btnSave.visibility = View.GONE
+                cardSearch.visibility = View.GONE
             } else {
                 viewLoading.visibility = View.GONE
                 rvPlants.visibility = View.VISIBLE
                 btnSave.visibility = View.VISIBLE
+                cardSearch.visibility = View.VISIBLE
             }
         }
     }
@@ -150,8 +149,22 @@ class HomeFragment : Fragment() {
         findNavController().navigate(action)
     }
 
+    private fun handleIntent(intent: Intent) {
+        if (Intent.ACTION_SEARCH == intent.action) {
+            intent.getStringExtra(SearchManager.QUERY)?.also { query ->
+                binding.searchView.setQuery(query, false)
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        handleIntent(requireActivity().intent)
+    }
+
     override fun onDestroyView() {
         _binding = null
+        handleIntent(requireActivity().intent.setAction(null))
         super.onDestroyView()
     }
 }
