@@ -65,6 +65,7 @@ dependencies {
     def imgPicker = "1.6.1"
     def shimmer = "0.5.0"
     def circleImage = "3.1.0"
+    def picasso = "2.8"
 
     implementation "androidx.core:core-ktx:$core_ktx"
     implementation "androidx.appcompat:appcompat:$app_compat"
@@ -116,6 +117,7 @@ dependencies {
     // Firebase
     implementation platform('com.google.firebase:firebase-bom:31.0.2')
     implementation "com.google.firebase:firebase-auth-ktx"
+    implementation 'com.google.firebase:firebase-firestore-ktx'
     implementation "com.google.firebase:firebase-firestore:17.1.2"
     implementation "com.google.firebase:firebase-analytics"
     implementation "com.google.firebase:firebase-storage-ktx:20.1.0"
@@ -133,5 +135,9 @@ dependencies {
 
     //Imagen circular
     implementation "de.hdodenhof:circleimageview:$circleImage"
+
+    //Picasso
+    implementation "com.squareup.picasso:picasso:$picasso"
+
 
 }

@@ -21,5 +21,4 @@ class AuthRepositoryImpl @Inject constructor(
            false
        }
     }
-
 }

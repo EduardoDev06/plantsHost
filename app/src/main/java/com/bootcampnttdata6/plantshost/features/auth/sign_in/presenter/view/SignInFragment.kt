@@ -41,6 +41,7 @@ class SignInFragment : Fragment() {
                 is Resource.Success -> {
                     handleLoading(isLoading = false)
                     findNavController().navigate(R.id.action_sign_in_to_mainActivity)
+                    requireActivity().finish()
                 }
                 is Resource.Error -> {
                     handleLoading(isLoading = false)

@@ -31,9 +31,9 @@
     </fragment>
     <fragment
         android:id="@+id/sign_up"
-        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_up.SignUpFragment"
+        android:name="com.bootcampnttdata6.plantshost.features.auth.sign_up.presenter.view.SignUpFragment"
         android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
+        tools:layout="@layout/fragment_sign_up">
         <action
             android:id="@+id/action_sign_up_to_sign_in"
             app:destination="@id/sign_in" />
