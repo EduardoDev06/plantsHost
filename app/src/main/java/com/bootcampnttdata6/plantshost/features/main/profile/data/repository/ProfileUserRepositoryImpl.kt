@@ -27,7 +27,7 @@ class ProfileUserRepositoryImpl @Inject constructor(
         val id = userAuth?.uid
         val imageRef = firebaseStorage.reference.child("users/${userAuth?.uid}")
         val baos = ByteArrayOutputStream()
-        userImageBitmap?.compress(Bitmap.CompressFormat.PNG, 40, baos)
+        userImageBitmap?.compress(Bitmap.CompressFormat.PNG, 20, baos)
         id?.let {
             firebaseFirestore.collection("users").document(it).update(
                 mapOf("userImage" to imageRef.putBytes(baos.toByteArray()).await().storage.downloadUrl.await().toString()

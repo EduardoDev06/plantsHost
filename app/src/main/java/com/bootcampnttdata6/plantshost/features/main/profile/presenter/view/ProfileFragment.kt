@@ -16,7 +16,7 @@ import com.bootcampnttdata6.plantshost.R
 import com.bootcampnttdata6.plantshost.databinding.FragmentProfileBinding
 import com.bootcampnttdata6.plantshost.features.main.profile.domain.model.User
 import com.bootcampnttdata6.plantshost.features.main.profile.presenter.viewmodels.ProfileUserViewModel
-import com.bumptech.glide.Glide
+import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -40,7 +40,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         binding = FragmentProfileBinding.bind(view)
 
-        updateUserViewModel.readProfileUser()
         llenarPerfilUsuario()
         activarElementos(false)
         editarPerfil()
@@ -68,12 +67,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 when (result) {
                     is Result.Success -> {
                         binding.progressBar.visibility = View.GONE
-
                         val userdata = result.data
                         img = userdata?.userImage
-                        Glide.with(binding.userImage.context).load(img).centerCrop()
-                            .into(binding.userImage)
-
+                        if(img != ""){
+                            Picasso.get()
+                                .load(img)
+                                .into(binding.userImage)
+                        }
                         binding.userEmail.setText(userdata?.userEmail)
                         binding.userFullName.setText(userdata?.userFullName)
                         binding.userAddress.setText(userdata?.userAddress)
@@ -118,16 +118,18 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
 
             activarElementos(false)
+
         }
+
     }
 
     private val startForResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val photoPick = result.data
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { resultActivity ->
+            if(resultActivity.resultCode == Activity.RESULT_OK){
+                val photoPick = resultActivity.data
                 userImageBitmap = photoPick?.extras?.get("data") as Bitmap
                 binding.userImage.setImageBitmap(userImageBitmap)
-            } else {
+            }else{
                 Toast.makeText(requireContext(), "No ha seleccionado foto", Toast.LENGTH_SHORT).show()
             }
         }
@@ -135,9 +137,9 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun editarPerfil() {
         binding.btnEditarPerfil.setOnClickListener {
             activarElementos(true)
-            binding.userImage.setOnClickListener {
-                startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
-            }
+        }
+        binding.userImage.setOnClickListener {
+            startForResult.launch(Intent(MediaStore.ACTION_IMAGE_CAPTURE))
         }
     }
 }
