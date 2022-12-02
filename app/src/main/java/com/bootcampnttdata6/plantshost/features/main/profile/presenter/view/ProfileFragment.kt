@@ -92,7 +92,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                     }
                     is Result.Finish -> {}
                 }
-
             }
         }
     }
@@ -100,13 +99,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun guardarCambios() {
 
         binding.btnGuardarCambios.setOnClickListener {
-
             userFullName = binding.userFullName.text?.toString()?.trim()
             userEmail = binding.userEmail.text.toString().trim()
             userAddress = binding.userAddress.text?.toString()?.trim()
             userAge = binding.userAge.text?.toString()?.trim()?.toInt()
             userPassword = binding.userPassword.text.toString().trim()
-
 
             if (userImageBitmap == null) {
                 val user = User(userFullName, userAge, userEmail, userPassword, userAddress, img)
@@ -130,7 +127,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 userImageBitmap = photoPick?.extras?.get("data") as Bitmap
                 binding.userImage.setImageBitmap(userImageBitmap)
             }else{
-                Toast.makeText(requireContext(), "No ha seleccionado foto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No ha seleccionado alguna foto", Toast.LENGTH_SHORT).show()
             }
         }
 
