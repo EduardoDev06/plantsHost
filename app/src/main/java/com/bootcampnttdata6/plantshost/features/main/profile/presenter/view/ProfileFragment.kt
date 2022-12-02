@@ -3,6 +3,7 @@ package com.bootcampnttdata6.plantshost.features.main.profile.presenter.view
 import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.fragment.app.Fragment
@@ -128,7 +129,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
                 userImageBitmap = photoPick?.extras?.get("data") as Bitmap
                 binding.userImage.setImageBitmap(userImageBitmap)
             } else {
-                Toast.makeText(requireContext(), "No ha seleccionado foto", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "No ha tomado ninguna foto", Toast.LENGTH_SHORT).show()
             }
         }
 

@@ -52,7 +52,7 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun initPlantsRecyclerview() {
-        binding.rvFavorite.layoutManager = GridLayoutManager(activity,2, RecyclerView.VERTICAL,false)
+        binding.rvFavorite.layoutManager = GridLayoutManager(activity,1, RecyclerView.VERTICAL,false)
         favoriteAdapter = FavoriteAdapter(listaFavoritePlants) {
                 dataPlants -> onClickListener(dataPlants)
         }

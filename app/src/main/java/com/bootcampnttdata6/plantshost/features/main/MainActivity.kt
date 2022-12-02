@@ -1,5 +1,6 @@
 package com.bootcampnttdata6.plantshost.features.main
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -49,20 +50,15 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.home -> {
-                    menu?.findItem(R.id.action_search)?.isVisible = true
-                    menu?.findItem(R.id.action_logout)?.isVisible = true
+                    menu?.findItem(R.id.action_more)?.isVisible = true
                 }
                 R.id.favorite -> {
-                    menu?.findItem(R.id.action_search)?.isVisible = false
-                    menu?.findItem(R.id.action_logout)?.isVisible = true
+                    menu?.findItem(R.id.action_more)?.isVisible = true
                 }
                 R.id.profile -> {
-                    menu?.findItem(R.id.action_search)?.isVisible = false
-                    menu?.findItem(R.id.action_logout)?.isVisible = true
+                    menu?.findItem(R.id.action_more)?.isVisible = true
                 }
                 else -> {
-                    menu?.findItem(R.id.action_search)?.isVisible = false
-                    menu?.findItem(R.id.action_logout)?.isVisible = false
                     menu?.findItem(R.id.action_more)?.isVisible = false
 
                 }
@@ -80,6 +76,11 @@ class MainActivity : AppCompatActivity() {
             else -> return super.onOptionsItemSelected(item)
         }
 
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        setIntent(intent)
     }
 
     override fun onSupportNavigateUp(): Boolean {

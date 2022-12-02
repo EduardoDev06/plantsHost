@@ -41,7 +41,7 @@
             android:id="@+id/rv_favorite"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginHorizontal="10dp"
+            android:layout_marginHorizontal="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             />

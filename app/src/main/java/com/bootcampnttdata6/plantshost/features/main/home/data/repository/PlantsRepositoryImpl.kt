@@ -7,7 +7,6 @@ import com.bootcampnttdata6.plantshost.features.main.home.domain.repository.Plan
 import com.bootcampnttdata6.plantshost.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
@@ -37,7 +36,6 @@ class PlantsRepositoryImpl @Inject constructor(
             emit(Resource.Error(ex.message.toString()))
         }
     }
-    override fun getListPlants(): Flow<List<Plants>> =
-        plantsDao.getPlants().map { plants -> plants.map { it.toPlantsDomain() } }
+
 }
 

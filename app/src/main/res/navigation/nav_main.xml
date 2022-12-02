@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/favorite"
         android:name="com.bootcampnttdata6.plantshost.features.main.favorite.presentation.FavoriteFragment"
-        android:label="fragment_favorite"
+        android:label="Favoritos"
         tools:layout="@layout/fragment_favorite" >
         <action
             android:id="@+id/action_favorite_to_detail"
@@ -29,12 +29,12 @@
     <fragment
         android:id="@+id/profile"
         android:name="com.bootcampnttdata6.plantshost.features.main.profile.presenter.view.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="Perfil"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/detail"
         android:name="com.bootcampnttdata6.plantshost.features.main.detail.presentation.DetailFragment"
-        android:label="fragment_detail"
+        android:label="Detalle"
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="idPlant"
@@ -43,6 +43,6 @@
     <fragment
         android:id="@+id/createPlant"
         android:name="com.bootcampnttdata6.plantshost.features.main.createPlant.presenter.CreatePlantFragment"
-        android:label="fragment_create_plant"
+        android:label="Crea una nueva planta"
         tools:layout="@layout/fragment_create_plant" />
 </navigation>
